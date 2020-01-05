@@ -28,8 +28,8 @@ s.sortable = false
 s.des = server_count
 s.current = uci:get("vssr", name, "global_server")
 s.servers = cjson.encode(server_table)
-s.template = "vssr/tblsection"
-s.extedit = luci.dispatcher.build_url("admin/services/vssr/servers/%s")
+s.template = "cbi/tblsection1"
+s.extedit = luci.dispatcher.build_url("admin/vpn/vssr/servers/%s")
 function s.create(...)
     local sid = TypedSection.create(...)
     if sid then
@@ -56,6 +56,6 @@ if nixio.fs.access("/usr/bin/kcptun-client") then
     function o.cfgvalue(...) return Value.cfgvalue(...) or "?" end
 
 end
-m:section(SimpleSection).template = "vssr/status2"
+
 
 return m
