@@ -309,42 +309,94 @@ function check_port()
     luci.http.prepare_content("application/json")
     luci.http.write_json({ret = 1 , used = t1})
 
-    
---[[local sockets = require "socket"
-    local set = luci.http.formvalue("host")
-    local port = luci.http.formvalue("port")
-    local retstring = ""
-    local iret = 1
-    iret = luci.sys.call(" ipset add ss_spec_wan_ac " .. set .. " 2>/dev/null")
-    socket = nixio.socket("inet", "stream")
-    socket:setopt("socket", "rcvtimeo", 3)
-    socket:setopt("socket", "sndtimeo", 3)
-    local t0 = sockets.gettime()
-    ret = socket:connect(set, port)
-    if tostring(ret) == "true" then
-        socket:close()
-        retstring = "1"
+end
+
+function JudgeIPString(ipStr)
+    if type(ipStr) ~= "string" then return false end
+
+    -- 判断长度
+    local len = string.len(ipStr)
+    if len < 7 or len > 15 then -- 长度不对
+        return false
+    end
+
+    -- 判断出现的非数字字符
+    local point = string.find(ipStr, "%p", 1) -- 字符"."出现的位置
+    local pointNum = 0 -- 字符"."出现的次数 正常ip有3个"."
+    while point ~= nil do
+        if string.sub(ipStr, point, point) ~= "." then -- 得到非数字符号不是字符"."
+            return false
+        end
+        pointNum = pointNum + 1
+        point = string.find(ipStr, "%p", point + 1)
+        if pointNum > 3 then return false end
+    end
+    if pointNum ~= 3 then -- 不是正确的ip格式
+        return false
+    end
+
+    -- 判断数字对不对
+    local num = {}
+    for w in string.gmatch(ipStr, "%d+") do
+        num[#num + 1] = w
+        local kk = tonumber(w)
+        if kk == nil or kk > 255 then -- 不是数字或超过ip正常取值范围了
+            return false
+        end
+    end
+
+    if #num ~= 4 then -- 不是4段数字
+        return false
+    end
+
+    return ipStr
+end
+
+-- 检测 当前节点ip 和 网站访问情况
+function check_ip()
+    local e = {}
+    http = require("socket.http")
+    http.TIMEOUT = 1
+
+    result = luci.sys.exec("curl -s https://api.ip.sb/ip")
+    if JudgeIPString(result) then
+        local cmd = '/usr/share/vssr/getip.sh '..result
+        e.outboard = result
+        e.outboardip = luci.sys.exec(cmd)
     else
-        retstring = "0"
+        e.outboard = false
     end
-    if iret == 0 then
-        luci.sys.call(" ipset del ss_spec_wan_ac " .. set)
-    end
-    local t1 = sockets.gettime()
-    local tt =t1 -t0
+
+    -- 检测国内通道
+    e.baidu = false
+    sret1 = luci.sys.call("/usr/bin/ssr-check www.baidu.com 80 3 1")
+    if sret1 == 0 then e.baidu = true end
+
+    e.taobao = false
+    sret2 = luci.sys.call("/usr/bin/ssr-check www.taobao.com 80 3 1")
+    if sret2 == 0 then e.taobao = true end
+
+    -- 检测国外通道
+    e.google = false
+    sret3 = luci.sys.call("/usr/bin/ssr-check www.google.com 80 3 1")
+    if sret3 == 0 then e.google = true end
+
+    e.youtube = false
+    sret4 = luci.sys.call("/usr/bin/ssr-check www.youtube.com 80 3 1")
+    if sret4 == 0 then e.youtube = true end
+
     luci.http.prepare_content("application/json")
-    luci.http.write_json({ret = retstring , used = math.floor(tt*1000 + 0.5)})
-    
---]]
+    luci.http.write_json(e)
 end
 
 -- 获取节点国旗 iso code
 function get_flag()
-    local e={}
+    local e = {}
     local host = luci.http.formvalue("host")
-    local cmd1 = '/usr/share/vssr/getflag.sh '..host
-    e.host=host
-    e.flag=luci.sys.exec(cmd1)
+    local remark = luci.http.formvalue("remark")
+    local cmd1 = '/usr/share/vssr/getflag.sh "' .. remark .. '" ' .. host
+    e.host = host
+    e.flag = luci.sys.exec(cmd1)
     luci.http.prepare_content("application/json")
     luci.http.write_json(e)
 end
