@@ -33,6 +33,6 @@ https://github.com/coolsnowwolf/lede
 #### My other project
 Argon theme ：https://github.com/jerrykuku/luci-theme-argon
       
-theme:https://github.com/Leo-Jo-My/luci-theme-leo 此主题兼容官方
+theme : https://github.com/Leo-Jo-My/luci-theme-leo 此主题兼容官方
 
 openwrt-nanopi-r1s-h5 ： https://github.com/jerrykuku/openwrt-nanopi-r1s-h5
