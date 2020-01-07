@@ -62,6 +62,11 @@ o.datatype = "uinteger"
 o:depends("enable_switch", "1")
 o.default = 5
 
+o = s:option(Value, "switch_try_count", translate("Check Try Count"))
+o.datatype = "uinteger"
+o:depends("enable_switch", "1")
+o.default = 3
+
 -- [[ SOCKS5 Proxy ]]--
 if nixio.fs.access("/usr/bin/ssr-local") then
 s = m:section(TypedSection, "socks5_proxy", translate("SOCKS5 Proxy"))
@@ -80,4 +85,23 @@ o.rmempty = false
 
 end
 
+
+-- [[ 更新设置 ]]--
+
+s = m:section(TypedSection,"socks5_proxy",translate("Update Setting")) 
+s.anonymous = true
+
+o = s:option(Button,"gfw_data",translate("GFW List Data"))
+o.rawhtml  = true
+o.template = "vssr/refresh"
+o.value =tostring(math.ceil(gfw_count)) .. " " .. translate("Records")
+
+o = s:option(Button,"ip_data",translate("China IP Data"))
+o.rawhtml  = true
+o.template = "vssr/refresh"
+o.value =ip_count .. " " .. translate("Records")
+
+
+
 return m
+
