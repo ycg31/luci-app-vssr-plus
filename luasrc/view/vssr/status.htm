@@ -12,7 +12,7 @@ math.randomseed(os.time())
         <div class="pure-u-1-4">
             <div class="block pure-g">
                 <div class="pure-u-3-5">
-                    <h4 id="vssr_status"><%:Client%><br /><span class="red"><%:Not Running%></span></h4>
+                    <h4 id="vssr_status">客户端<br /><span class="red"><%:Not Running%></span></h4>
                 </div>
                 <div class="pure-u-2-5">
                     <div class="img-con">
@@ -24,7 +24,7 @@ math.randomseed(os.time())
         <div class="pure-u-1-4">
             <div class="block pure-g">
                 <div class="pure-u-3-5">
-                    <h4 id="game_status"><%:Game Mode%><br /><span class="red"><%:Not Running%></span></h4>
+                    <h4 id="game_status">游戏模式<br /><span class="red"><%:Not Running%></span></h4>
                 </div>
                 <div class="pure-u-2-5">
                     <div class="img-con">
@@ -80,14 +80,14 @@ math.randomseed(os.time())
                 var tb5 = document.getElementById('socks5_status');
                 if (data && tb) {
                     if (data.global) {
-                        tb.innerHTML = '<%:Client%><br><span class="green"><%:Running%></span>';
+                        tb.innerHTML = '客户端<br><span class="green"><%:Running%></span>';
                     } else {
-                        tb.innerHTML = '<%:Client%><br><span class="red"><%:Not Running%></span>';
+                        tb.innerHTML = '客户端<br><span class="red"><%:Not Running%></span>';
                     }
                     if (data.game) {
-                        tb3.innerHTML = '<%:Game Mode%><br><span class="green"><%:Running%></span>';
+                        tb3.innerHTML = '游戏模式<br><span class="green"><%:Running%></span>';
                     } else {
-                        tb3.innerHTML = '<%:Game Mode%><br><span class="red"><%:Not Running%></span>';
+                        tb3.innerHTML = '游戏模式<br><span class="red"><%:Not Running%></span>';
                     }
                     if (data.pdnsd) {
                         tb4.innerHTML = 'PDNSD<br><span class="green"><%:Running%></span>';
