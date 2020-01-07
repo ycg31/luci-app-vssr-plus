@@ -22,6 +22,8 @@ a new SSR SS V2ray luci app bese luci-app-ssr-plus
 
 新修改插件难免有bug 请不要大惊小怪。欢迎提交bug。
 
+# 此版本为 jerryk + lean 2位大佬的整合版从新支持SS添加trojan支持 感谢作者开源！
+
 #### Notice
 需要的依赖有python3-maxminddb libmaxminddb 请自行添加
 
@@ -30,5 +32,6 @@ https://github.com/coolsnowwolf/lede
 
 #### My other project
 Argon theme ：https://github.com/jerrykuku/luci-theme-argon
+      theme:https://github.com/Leo-Jo-My/luci-theme-leo
 
 openwrt-nanopi-r1s-h5 ： https://github.com/jerrykuku/openwrt-nanopi-r1s-h5
