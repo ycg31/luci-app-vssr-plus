@@ -494,7 +494,21 @@ https://github.com/pure-css/pure/blob/master/LICENSE.md
 footer.mobile-hide{
     display: block;
 }
-
+.cbi-button-add{
+        position:fixed;
+        padding: 0.3rem 0.5rem;
+        z-index:1000;
+        width:80px !important;
+        height:80px;
+        bottom:150px;
+        right:40px;
+   font-size:20px;
+        border-radius:50%;
+        display:block;
+	  background-color: #008080!important;
+        border-color: 	#008080 !important; 	
+        box-shadow: 0 0 1rem 0 rgba(136,152,170,.75);
+    }
 .mar-10 {margin-left: 50px; margin-right: 10px;}
 
 .status-bar{
