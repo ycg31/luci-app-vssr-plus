@@ -5,9 +5,7 @@
 local m, s, sec, o, kcp_enable
 local vssr = "vssr"
 
-local gfw_count=0
-local ad_count=0
-local ip_count=0
+
 local gfwmode=0
 
 if nixio.fs.access("/etc/dnsmasq.ssr/gfw_list.conf") then
@@ -16,18 +14,7 @@ end
 
 local uci = luci.model.uci.cursor()
 
-local sys = require "luci.sys"
 
-if gfwmode==1 then 
- gfw_count = tonumber(sys.exec("cat /etc/dnsmasq.ssr/gfw_list.conf | wc -l"))/2
- if nixio.fs.access("/etc/dnsmasq.ssr/ad.conf") then
-  ad_count=tonumber(sys.exec("cat /etc/dnsmasq.ssr/ad.conf | wc -l"))
- end
-end
- 
-if nixio.fs.access("/etc/china_ssr.txt") then 
- ip_count = sys.exec("cat /etc/china_ssr.txt | wc -l")
-end
 
 m = Map(vssr)
 
@@ -78,19 +65,18 @@ o:value("gfw", translate("GFW List Mode"))
 o:value("router", translate("IP Route Mode"))
 o:value("all", translate("Global Mode"))
 o:value("oversea", translate("Oversea Mode"))
-o.default = gfw
-
+o.default = "router"
 o = s:option(ListValue, "dports", translate("Proxy Ports"))
 o:value("1", translate("All Ports"))
 o:value("2", translate("Only Common Ports"))
-o.default = 1
+o.default = 1														   
 
 o = s:option(ListValue, "pdnsd_enable", translate("Resolve Dns Mode"))
 o:value("1", translate("Use Pdnsd tcp query and cache"))
 o:value("0", translate("Use Local DNS Service listen port 5335"))
 o.default = 1
 
-o = s:option(ListValue, "tunnel_forward", translate("Anti-pollution DNS Server"))
+o = s:option(Value, "tunnel_forward", translate("Anti-pollution DNS Server"))
 o:value("8.8.4.4:53", translate("Google Public DNS (8.8.4.4)"))
 o:value("8.8.8.8:53", translate("Google Public DNS (8.8.8.8)"))
 o:value("208.67.222.222:53", translate("OpenDNS (208.67.222.222)"))
@@ -106,24 +92,7 @@ o:value("114.114.114.114:53", translate("Oversea Mode DNS-1 (114.114.114.114)"))
 o:value("114.114.115.115:53", translate("Oversea Mode DNS-2 (114.114.115.115)"))
 o:depends("pdnsd_enable", "1")
 
-o = s:option(Button,"gfw_data",translate("GFW List Data"))
-o.rawhtml  = true
-o.template = "vssr/refresh"
-o.value =tostring(math.ceil(gfw_count)) .. " " .. translate("Records")
-
-o = s:option(Button,"ad_data",translate("Advertising Data")) 
-o .rawhtml  = true
-o .template = "vssr/refresh"
-o .value =tostring(math.ceil(ad_count)) .. " " .. translate("Records")
-
-o = s:option(Button,"ip_data",translate("China IP Data"))
-o.rawhtml  = true
-o.template = "vssr/refresh"
-o.value =ip_count .. " " .. translate("Records")
-
-o = s:option(Button,"check_port",translate("Check Server Port"))
-o.template = "vssr/checkport"
-o.value =translate("No Check")
+m:section(SimpleSection).template  = "vssr/status2"
 return m
 
 
