@@ -44,9 +44,19 @@ msgstr "结束订阅"
 msgid "Update Setting"
 msgstr "更新设置"
 
+
+msgid "AlterId"
+msgstr "额外ID"
+
 msgid "Save And Start Subscribe"
 msgstr "保存并开始订阅"
 
+
+msgid "VmessId (UUID)"
+msgstr "用户ID(UUID)"
+
+msgid "Transport"
+msgstr "传输方式"
 
 msgid "Configuration Url"
 msgstr "配置链接"
@@ -450,7 +460,7 @@ msgid "Auto Update Server subscription, GFW list and CHN route"
 msgstr "自动更新服务器订阅、GFW列表和 CHN路由表"
 
 msgid "Subscribe URL"
-msgstr "SSR/V2RAY订阅URL地址"
+msgstr "SS/SSR/V2RAY订阅URL地址"
 
 msgid "Update"
 msgstr "更新"
@@ -559,4 +569,5 @@ msgstr "所有端口（默认）"
 
 msgid "Only Common Ports"
 msgstr "仅常用端口（不走P2P流量到代理）"
+
 
