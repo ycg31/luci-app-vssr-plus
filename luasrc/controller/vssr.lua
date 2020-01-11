@@ -18,11 +18,9 @@ function index()
               _("Node List"), 11).leaf = true -- 编辑节点
 entry({"admin", "services", "vssr", "subscription"},cbi("vssr/subscription"), _("Subscription"),12).leaf = true
         entry({"admin", "services", "vssr", "control"}, cbi("vssr/control"),
-              _("Access Control"), 13).leaf = true -- 访问控制
-          entry({"admin", "services", "vssr", "servers-list"}, cbi("vssr/servers-list"),
-              _("Severs Nodes"), 14).leaf = true
+              _("Access Control"), 13).leaf = true -- 访问控制 
         entry({"admin", "services", "vssr", "advanced"}, cbi("vssr/advanced"),
-              _("Advanced Settings"), 15).leaf = true -- 高级设置
+              _("Advanced Settings"), 14).leaf = true -- 高级设置
     elseif nixio.fs.access("/usr/bin/ssr-server") then
         entry({"admin", "services", "vssr"},
               alias("admin", "services", "vssr", "server"), _("vssr"), 10).dependent =
