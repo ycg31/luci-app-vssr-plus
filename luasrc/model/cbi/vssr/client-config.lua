@@ -48,7 +48,7 @@ obfs = {
 local securitys = {"auto", "none", "aes-128-gcm", "chacha20-poly1305"}
 
 m = Map(vssr, translate("Edit vssr Server"))
-m.redirect = luci.dispatcher.build_url("admin/services/vssr/servers")
+m.redirect = luci.dispatcher.build_url("admin/vpn/vssr/servers")
 if m.uci:get(vssr, sid) ~= "servers" then
     luci.http.redirect(m.redirect)
     return
@@ -246,6 +246,7 @@ o:value("utp", translate("BitTorrent (uTP)"))
 o:value("wechat-video", translate("WechatVideo"))
 o:value("dtls", "DTLS 1.2")
 o:value("wireguard", "WireGuard")
+
 -- [[ mKCP部分 ]]--
 
 o = s:option(ListValue, "kcp_guise", translate("Camouflage Type"))

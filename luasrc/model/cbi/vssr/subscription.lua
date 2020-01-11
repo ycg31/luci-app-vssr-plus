@@ -59,7 +59,7 @@ o.write = function()
 	uci:commit("vssr") 
     luci.sys.call("uci commit vssrsr && /etc/init.d/vssr stop")
 
-    luci.http.redirect(luci.dispatcher.build_url("admin", "services", "vssr", "servers"))
+    luci.http.redirect(luci.dispatcher.build_url("admin", "vpn", "vssr", "servers"))
  return
 end
 

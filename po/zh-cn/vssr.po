@@ -38,6 +38,9 @@ msgid "Check Try Count"
 msgstr "切换检查重试次数"
 
 
+msgid "Node List"
+msgstr "节点列表"
+
 msgid "END SUBSCRIBE"
 msgstr "结束订阅"
 
@@ -63,6 +66,38 @@ msgstr "配置链接"
 
 msgid "Import Configuration"
 msgstr "导入配置信息"
+
+msgid "Apply"
+msgstr "应用"
+
+msgid "total"
+msgstr "总计"
+
+msgid "Node list"
+msgstr "节点列表"
+
+
+msgid "Nodes"
+msgstr "个节点"
+
+msgid "Client"
+msgstr "客户端"
+
+msgid "Visit foreign websites"
+msgstr "访问国外网站"
+
+msgid "Visit domestic website"
+msgstr "访问国内网站"
+
+msgid "Problem detected"
+msgstr "无法访问"
+
+msgid "Working..."
+msgstr "连接正常"
+
+
+msgid "Game Mode"
+msgstr "游戏模式"
 
 
 msgid "V2ray SOCKS5 Proxy"
@@ -569,5 +604,7 @@ msgstr "所有端口（默认）"
 
 msgid "Only Common Ports"
 msgstr "仅常用端口（不走P2P流量到代理）"
+
+
 
 

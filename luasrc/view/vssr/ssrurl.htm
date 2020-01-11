@@ -3,7 +3,7 @@
 <script type="text/javascript">//<![CDATA[
 
     function getFlag(hosts, sid) {
-        $.get('<%=luci.dispatcher.build_url("admin", "services", "vssr","flag")%>',
+        $.get('<%=luci.dispatcher.build_url("admin", "vpn", "vssr","flag")%>',
             {
                 host: hosts
             },

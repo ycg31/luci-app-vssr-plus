@@ -94,5 +94,3 @@ o:depends("pdnsd_enable", "1")
 
 m:section(SimpleSection).template  = "vssr/status2"
 return m
-
-

@@ -88,14 +88,14 @@ math.randomseed(os.time())
         const $$ = document;
 
         function get_state(){
-            $.get('<%=url([[admin]], [[services]], [[vssr]], [[run]])%>',
+            $.get('<%=url([[admin]], [[vpn]], [[vssr]], [[run]])%>',
             function (data) {
                 console.log(data);
             }, "json");
         }
         //get_state();
         //<![CDATA[
-        XHR.poll(5, '<%=url([[admin]], [[services]], [[vssr]], [[run]])%>', null,
+        XHR.poll(5, '<%=url([[admin]], [[vpn]], [[vssr]], [[run]])%>', null,
             function (x, data) {
                 var tb = document.getElementById('vssr_status');
                 var tb1 = document.getElementById('google_status');

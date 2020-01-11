@@ -36,10 +36,10 @@ math.randomseed(os.time())
         $(window).resize(resize);
         $(document).ready(function () {
             resize();
-            $.getJSON("<%=url([[admin]], [[services]], [[vssr]], [[ip]])%>", function (data) {
+            $.getJSON("<%=url([[admin]], [[vpn]], [[vssr]], [[ip]])%>", function (data) {
                 wirte_status(data);
             });
-            XHR.poll(5, '<%=url([[admin]], [[services]], [[vssr]], [[ip]])%>', null,
+            XHR.poll(5, '<%=url([[admin]], [[vpn]], [[vssr]], [[ip]])%>', null,
                 function (x, data) {
                     wirte_status(data);
                 }
