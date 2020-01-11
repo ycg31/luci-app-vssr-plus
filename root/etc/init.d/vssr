@@ -331,7 +331,7 @@ start_redir() {
       $sscmd -c $CONFIG_FILE $ARG_OTA -f /var/run/ssr-retcp_$i.pid >/dev/null 2>&1
     done
 
-		echo "$(date "+%Y-%m-%d %H:%M:%S") SSR/ShadowsocksR $threads 线程 已启动!" >> /tmp/vssr.log
+		echo "$(date "+%Y-%m-%d %H:%M:%S") Shadowsocks/ShadowsocksR $threads 线程 已启动!" >> /tmp/vssr.log
   elif [ "$stype" == "v2ray" ] ;then
     $sscmd -config /var/etc/v2-ssr-retcp.json >/dev/null 2>&1 &
     echo "$(date "+%Y-%m-%d %H:%M:%S") $($sscmd -version | head -1) 已启动!" >> /tmp/vssr.log
