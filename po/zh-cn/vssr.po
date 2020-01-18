@@ -37,6 +37,14 @@ msgstr "订阅，请不要刷新!"
 msgid "Check Try Count"
 msgstr "切换检查重试次数"
 
+msgid "Log"
+msgstr "日志"
+
+msgid "Bypass Domain List"
+msgstr "不走代理的域名"
+
+msgid "Black Domain List"
+msgstr "强制走代理的域名"
 
 msgid "Node List"
 msgstr "节点列表"
