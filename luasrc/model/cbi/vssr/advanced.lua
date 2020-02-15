@@ -84,6 +84,11 @@ o.default = 1080
 o.rmempty = false
 
 end
+-- [[ adblock ]]--
+s = m:section(TypedSection, "global", translate("adblock settings"))
+s.anonymous = true
 
+o = s:option(Flag, "adblock", translate("Enable adblock"))
+o.rmempty = false
 return m
 
