@@ -1026,7 +1026,7 @@ boot() {
 }
 
 stop() {
-	/usr/bin/vssr -rules -f
+	/usr/bin/vssr-rules -f
 	srulecount=`iptables -L|grep SSR-SERVER-RULE|wc -l`
 	if [ $srulecount -gt 0 ] ;then
 		iptables -F SSR-SERVER-RULE
