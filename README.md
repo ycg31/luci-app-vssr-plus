@@ -40,6 +40,11 @@ theme : https://github.com/Leo-Jo-My/luci-theme-opentomcat
 theme : https://github.com/Leo-Jo-My/luci-theme-Butterfly
 
 openwrt-nanopi-r1s-h5 ： https://github.com/jerrykuku/openwrt-nanopi-r1s-h5
+
+### 说明
+
+源码来源：https://github.com/jerrykuku/luci-app-vssr
+
 ### 使用方法
 ```Brach
     #下载源码
@@ -55,6 +60,3 @@ openwrt-nanopi-r1s-h5 ： https://github.com/jerrykuku/openwrt-nanopi-r1s-h5
     make package/luci-app-vssr/{clean,compile} V=s
 
 
-### 说明
-```Brach
-源码来源：https://github.com/jerrykuku/luci-app-vssr
