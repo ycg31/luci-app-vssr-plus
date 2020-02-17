@@ -37,8 +37,24 @@ theme : https://github.com/Leo-Jo-My/luci-theme-opentomato
 
 theme : https://github.com/Leo-Jo-My/luci-theme-opentomcat
 
-openwrt-nanopi-r1s-h5 ： https://github.com/jerrykuku/openwrt-nanopi-r1s-h5
+theme : https://github.com/Leo-Jo-My/luci-theme-Butterfly
 
-#### 说明
+openwrt-nanopi-r1s-h5 ： https://github.com/jerrykuku/openwrt-nanopi-r1s-h5
+### 使用方法
+```Brach
+    #下载源码
+    
+    git clone https://github.com/Leo-Jo-My/luci-app-vssr package/luci-app-vssr
+    
+    git clone https://github.com/Leo-Jo-My/my package/my  #依赖包
+    
+    make menuconfig
+    
+    #编译
+    
+    make package/luci-app-vssr/{clean,compile} V=s
+
+
+### 说明
 
 源码来源：https://github.com/jerrykuku/luci-app-vssr
