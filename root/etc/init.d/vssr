@@ -561,7 +561,7 @@ EOF
 
 	iptables -t nat -N HAPROXY
 
-	for server in $(uci -X show greatwall | grep servers | awk -F'[.=]' '{print $2}'); do
+	for server in $(uci -X show vssr | grep servers | awk -F'[.=]' '{print $2}'); do
 		local name=$(uci_get_by_name $server alias $server | sed 's/[^A-Za-z0-9_:.-]//g')
 		local host=$(uci_get_by_name $server server)
 		local port=$(uci_get_by_name $server server_port)
@@ -960,7 +960,7 @@ start() {
 
 	HAPROXY_MODE="0"
 	if [ "$GLOBAL_SERVER" = "__haproxy__" ]; then
-		GLOBAL_SERVER=$(uci -X show greatwall | grep servers | awk -F'[.=]' '{print $2}' | head -n 1)
+		GLOBAL_SERVER=$(uci -X show vssr | grep servers | awk -F'[.=]' '{print $2}' | head -n 1)
 		HAPROXY_MODE="1"
 	fi
 
@@ -972,7 +972,7 @@ start() {
 		mkdir -p /tmp/dnsmasq.d
 
 		if ! [ "$run_mode" = "oversea" ]; then
-#	for domain_names in $(uci -X show greatwall | grep domain_white_list | awk -F'[.=]' '{print $2}'); do
+#	for domain_names in $(uci -X show vssr | grep domain_white_list | awk -F'[.=]' '{print $2}'); do
 #		local DOMAIN_NANES=$(uci_get_by_name $domain_names domain_names)
 #
 #		sed -i "/$DOMAIN_NANES/d" /etc/dnsmasq.ssr/custom_forward.conf
@@ -1026,7 +1026,7 @@ boot() {
 }
 
 stop() {
-	/usr/bin/greatwall-rules -f
+	/usr/bin/vssr-rules -f
 	srulecount=`iptables -L|grep SSR-SERVER-RULE|wc -l`
 	if [ $srulecount -gt 0 ] ;then
 		iptables -F SSR-SERVER-RULE
