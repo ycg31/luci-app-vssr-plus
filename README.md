@@ -38,3 +38,7 @@ theme : https://github.com/Leo-Jo-My/luci-theme-opentomato
 theme : https://github.com/Leo-Jo-My/luci-theme-opentomcat
 
 openwrt-nanopi-r1s-h5 ： https://github.com/jerrykuku/openwrt-nanopi-r1s-h5
+
+#### 说明
+
+源码来源：https://github.com/jerrykuku/luci-app-vssr
