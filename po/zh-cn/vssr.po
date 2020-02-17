@@ -436,6 +436,9 @@ msgstr "【服务器端口】检查"
 msgid "Check Connect"
 msgstr "检查连通性"
 
+msgid "Basic Settings"
+msgstr "基本设置"
+
 msgid "Check Server"
 msgstr "检查服务器"
 
@@ -640,6 +643,125 @@ msgstr "所有端口（默认）"
 msgid "Only Common Ports"
 msgstr "仅常用端口（不走P2P流量到代理）"
 
+
+msgid "Use dnscrypt-proxy query and cache"
+msgstr "使用dnscrypt-proxy TCP查询并缓存"
+
+msgid "Use dnsforwarder tcp query and cache"
+msgstr "使用dnsforwarder TCP查询并缓存"
+
+msgid "Use dnsforwarder udp query and cache"
+msgstr "使用dnsforwarder UDP查询并缓存"
+
+
+msgid "Use chinadns query and cache"
+msgstr "使用ChinaDNS查询并缓存"
+
+msgid "Chiadns Resolve Dns Mode"
+msgstr "ChinaDNS的上游服务器"
+
+
+msgid "Use Local DNS Service"
+msgstr "使用设定DNS解析"
+
+msgid "Oversea GFW List Mode"
+msgstr "海外用户回国域名列表模式"
+
+msgid "Oversea IP Route Mode"
+msgstr "海外用户回国IP路由模式"
+
+msgid "Use Local DNS Service"
+msgstr "使用设定DNS解析"
+
+msgid "Using System Default DNS"
+msgstr "使用系统默认DNS"
+
+msgid "Using acceleration center DNS"
+msgstr "使用加速中心DNS"
+
+msgid "Appoint dns List"
+msgstr "指定DNS解析列表"
+
+msgid "Use https_dns_proxy query and cache"
+msgstr "使用https_dns_proxy TCP查询并缓存"
+
+msgid "Use smartdns query and cache"
+msgstr "使用SmartDNS TCP查询并缓存"
+
+msgid "Use Pcap_DNSProxy query and cache"
+msgstr "使用Pcap DNSProxy TCP查询并缓存"
+
+msgid "Kill BT"
+msgstr "禁止  BT"
+
+msgid "BT Port"
+msgstr "BT 端口"
+
+msgid "Enabling IPv6 server"
+msgstr "启用ipv6服务"
+
+msgid "Prohibit downloading tool ports through proxy"
+msgstr "禁止BT端口走代理"
+
+
+msgid "udp2raw Version"
+msgstr "udp2raw 版本"
+
+msgid "udp2raw tunnel Project"
+msgstr "udp2raw 项目"
+
+
+msgid "UDPspeeder Version"
+msgstr "UDPspeeder 版本"
+
+
+msgid "UDPspeeder Project"
+msgstr "UDPspeeder 项目"
+
+msgid "Appointlist List"
+msgstr "加速列表"
+
+msgid "udp2raw tunnel"
+msgstr "隧道"
+
+msgid "Enable udp2raw"
+msgstr "启用 udp2raw"
+
+msgid "Enable UDPspeeder"
+msgstr "启用 UDPspeeder"
+
+msgid "SOCKS5 Proxy"
+msgstr "SOCKS5代理"
+
+msgid "SSOCKS5 Proxy"
+msgstr "SS SOCKS5代理"
+
+msgid "Global SS Server"
+msgstr "SS服务端"
+
+
+msgid "V2SOCKS5 Proxy"
+msgstr "V2ray SOCKS5代理"
+
+msgid "Global V2RAY Server"
+msgstr "V2RAY服务端"
+
+msgid "haProxy settings"
+msgstr "HaProxy 设置"
+
+
+msgid "Enabling the Management Console"
+msgstr "启用管理控制台"
+
+msgid "Service Port"
+msgstr "端口"
+
+
+msgid "Enable HTTP Proxy"
+msgstr "启用HTTP代理"
+
+msgid "HTTP Port"
+msgstr "HTTP代理端口"
 
 
 

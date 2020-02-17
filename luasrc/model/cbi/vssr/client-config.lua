@@ -41,7 +41,7 @@ local protocol = {
     "auth_chain_d", "auth_chain_e", "auth_chain_f"
 }
 
-obfs = {
+local obfs = {
     "plain", "http_simple", "http_post", "random_head", "tls1.2_ticket_auth"
 }
 
@@ -105,6 +105,8 @@ o.rmempty = true
 o:depends("type", "ssr")
 o:depends("type", "ss")
 o:depends("type", "trojan")
+
+
 o = s:option(ListValue, "encrypt_method", translate("Encrypt Method"))
 for _, v in ipairs(encrypt_methods) do o:value(v) end
 o.rmempty = true
@@ -114,6 +116,29 @@ o = s:option(ListValue, "encrypt_method_ss", translate("Encrypt Method"))
 for _, v in ipairs(encrypt_methods_ss) do o:value(v) end
 o.rmempty = true
 o:depends("type", "ss")
+
+-- Shadowsocks Plugin
+
+o = s:option(ListValue, "plugin", translate("plugin"))
+o:value("none", "None")
+if nixio.fs.access("/usr/bin/v2ray-plugin") then
+o:value("/usr/bin/v2ray-plugin", "v2ray-plugin")
+end
+if nixio.fs.access("/usr/bin/obfs-local") then
+o:value("/usr/bin/obfs-local", "obfs-local")
+end
+if nixio.fs.access("/usr/bin/goquiet-client") then
+o:value("/usr/bin/goquiet-client", "GoQuiet")
+end
+o.rmempty = false
+o.default = "none"
+o:depends("type", "ss")
+
+o = s:option(Value, "plugin_opts", translate("Plugin Opts"))
+o.rmempty = true
+o:depends("plugin", "/usr/bin/v2ray-plugin")
+o:depends("plugin", "/usr/bin/obfs-local")
+o:depends("plugin", "/usr/bin/goquiet-client")
 
 o = s:option(ListValue, "protocol", translate("Protocol"))
 for _, v in ipairs(protocol) do o:value(v) end
@@ -127,27 +152,6 @@ o = s:option(ListValue, "obfs", translate("Obfs"))
 for _, v in ipairs(obfs) do o:value(v) end
 o.rmempty = true
 o:depends("type", "ssr")
-
-o = s:option(Flag, "v2ray_plugin", translate("V2ray-plugin"))
-o.rmempty = false
-o:depends("type", "ss")
-
-o = s:option(Value, "obfs_transport", translate("V2ray-plugin-transport"))
-o.rmempty = true
-o.default = "ws"
-o:depends("v2ray_plugin", "1")
-
-o = s:option(Value, "obfs_host", translate("V2ray-plugin-host"))
-o.rmempty = true
-o:depends("v2ray_plugin", "1")
-
-o = s:option(Value, "obfs_path", translate("V2ray-plugin-path"))
-o.rmempty = true
-o:depends("v2ray_plugin", "1")
-
-o = s:option(Flag, "obfs_opts", translate("TLS"))
-o.rmempty = false
-o:depends("v2ray_plugin", "1")
 
 o = s:option(Value, "obfs_param", translate("Obfs param(optional)"))
 o:depends("type", "ssr")

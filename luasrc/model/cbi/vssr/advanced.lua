@@ -67,6 +67,32 @@ o.datatype = "uinteger"
 o:depends("enable_switch", "1")
 o.default = 3
 
+-- [[ adblock ]]--
+s = m:section(TypedSection, "global", translate("adblock settings"))
+s.anonymous = true
+
+o = s:option(Flag, "adblock", translate("Enable adblock"))
+o.rmempty = false
+
+-- [[ haProxy ]]--
+
+s = m:section(TypedSection, "global_haproxy", translate("haProxy settings"))
+s.anonymous = true
+
+o = s:option(Flag, "admin_enable", translate("Enabling the Management Console"))
+o.rmempty = false
+o.default = 1
+
+o = s:option(Value, "admin_port", translate("Service Port"))
+o.datatype = "uinteger"
+o.default = 1111
+
+o = s:option(Value, "admin_user", translate("User name"))
+o.default = "admin"
+
+o = s:option(Value, "admin_password", translate("Password"))
+o.default = "root"
+
 -- [[ SOCKS5 Proxy ]]--
 if nixio.fs.access("/usr/bin/ssr-local") then
 s = m:section(TypedSection, "socks5_proxy", translate("SOCKS5 Proxy"))
@@ -83,12 +109,25 @@ o.datatype = "port"
 o.default = 1080
 o.rmempty = false
 
-end
--- [[ adblock ]]--
-s = m:section(TypedSection, "global", translate("adblock settings"))
-s.anonymous = true
-
-o = s:option(Flag, "adblock", translate("Enable adblock"))
+-- [[ HTTP Proxy ]]--
+if nixio.fs.access("/usr/sbin/privoxy") then
+o = s:option(Flag, "http_enable", translate("Enable HTTP Proxy"))
 o.rmempty = false
+
+o = s:option(Value, "http_port", translate("HTTP Port"))
+o.datatype = "port"
+o.default = 1081
+o.rmempty = false
+
+end
+end
+
+
+
+
+
+
+
 return m
+
 
