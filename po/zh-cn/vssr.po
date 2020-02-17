@@ -48,6 +48,8 @@ msgstr "密码"
 msgid "Ping All Servers"
 msgstr "PING 所有节点"
 
+msgid "Ping Latency"
+msgstr "Ping 延迟"
 
 msgid "vssr Server"
 msgstr "vssr 服务端"
@@ -437,7 +439,7 @@ msgid "Check Connect"
 msgstr "检查连通性"
 
 msgid "Basic Settings"
-msgstr "基本设置"
+msgstr "服务器设置"
 
 msgid "Check Server"
 msgstr "检查服务器"
