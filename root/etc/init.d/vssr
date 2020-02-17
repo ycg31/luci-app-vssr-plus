@@ -561,7 +561,7 @@ EOF
 
 	iptables -t nat -N HAPROXY
 
-	for server in $(uci -X show vssr | grep servers | awk -F'[.=]' '{print $2}'); do
+	for server in $(uci -X show vssr  | grep servers | awk -F'[.=]' '{print $2}'); do
 		local name=$(uci_get_by_name $server alias $server | sed 's/[^A-Za-z0-9_:.-]//g')
 		local host=$(uci_get_by_name $server server)
 		local port=$(uci_get_by_name $server server_port)
@@ -1026,7 +1026,7 @@ boot() {
 }
 
 stop() {
-	/usr/bin/vssr-rules -f
+	/usr/bin/vssr -rules -f
 	srulecount=`iptables -L|grep SSR-SERVER-RULE|wc -l`
 	if [ $srulecount -gt 0 ] ;then
 		iptables -F SSR-SERVER-RULE
@@ -1049,7 +1049,7 @@ stop() {
 	killall -q -9 vssr-monitor
 	killall -q -9 ss-redir
 	killall -q -9 ssr-redir
-        killall -q -9 trojan
+                 killall -q -9 trojan
 	killall -q -9 v2ray
 	killall -q -9 ssr-server
 	killall -q -9 ss-server
@@ -1064,9 +1064,9 @@ stop() {
 	killall -q -9 obfs-local
 	killall -q -9 obfs-server
 	killall -q -9 chinadns
-        killall -q -9 udp2raw
-        killall -q -9 udpspeeder
-        /usr/bin/udp2raw --clear >/dev/null
+                 killall -q -9 udp2raw
+                 killall -q -9 udpspeeder
+                 /usr/bin/udp2raw --clear >/dev/null
 	if [ -f /var/run/pdnsd.pid ] ;then
 		kill $(cat /var/run/pdnsd.pid) >/dev/null 2>&1
 	else
