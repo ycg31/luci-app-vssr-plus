@@ -1,6 +1,7 @@
 
 
 
+
 config global
 	option tunnel_forward '8.8.4.4:53'
 	option tunnel_address '0.0.0.0'
@@ -10,7 +11,10 @@ config global
 	option global_server 'nil'
 	option adblock '0'
 	option adblock_url 'https://gitee.com/privacy-protection-tools/anti-ad/raw/master/easylist.txt'
-	option enable_switch '0'
+	option enable_switch '1'
+	option switch_timeout '5'
+	option switch_try_count '3'
+	option switch_time '667'
 
 config socks5_proxy
 	option server 'nil'
@@ -66,6 +70,7 @@ config udpspeeder
 	option queue_len '1'
 	option timeout '8'
 	option udpspeeder_enable '0'
+
 
 
 
