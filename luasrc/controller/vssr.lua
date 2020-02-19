@@ -49,7 +49,8 @@ end
 entry({"admin", "vpn", "vssr", "status"},form("vssr/status"),_("Status"), 23).leaf = true
     entry({"admin", "vpn", "vssr", "log"}, cbi("vssr/log"), _("Log"), 30).leaf =
         true
-
+  entry({"admin", "services", "vssr", "licence"}, template("vssr/licence"),
+          _("Licence"), 40).leaf = true
     entry({"admin", "vpn", "vssr", "refresh"}, call("refresh_data")) -- 更新白名单和GFWLIST
     entry({"admin", "vpn", "vssr", "checkport"}, call("check_port")) -- 检测单个端口并返回Ping
     entry({"admin", "vpn", "vssr", "checkports"}, call("check_ports"))
@@ -132,7 +133,7 @@ function change_node()
     if sid ~= "" then
         uci:set("vssr", name, "global_server", sid)
         uci:commit("vssr")
-     luci.sys.call("/etc/init.d/vssr restart")
+     luci.sys.call(" /etc/init.d/vssr restart")
         e.status = true
     end
     luci.http.prepare_content("application/json")
@@ -288,6 +289,9 @@ function act_ping()
 	luci.http.prepare_content("application/json")
 	luci.http.write_json(e)
 end
+
+
+
 
 function check_status()
 	local set ="/usr/bin/ssr-check www." .. luci.http.formvalue("set") .. ".com 80 3 1"
