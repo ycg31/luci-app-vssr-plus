@@ -132,7 +132,7 @@ function change_node()
     if sid ~= "" then
         uci:set("vssr", name, "global_server", sid)
         uci:commit("vssr")
-     luci.sys.call("uci commit vssr && /etc/init.d/vssr restart")
+     luci.sys.call("/etc/init.d/vssr restart")
         e.status = true
     end
     luci.http.prepare_content("application/json")
