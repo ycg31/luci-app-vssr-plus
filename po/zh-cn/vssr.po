@@ -780,3 +780,8 @@ msgstr "插件"
 msgid "Plugin Opts"
 msgstr "插件参数"
 
+msgid "Before subscribing please click below to delete all servers in the subscription"
+msgstr "订阅前请点击下面的删除所有服务器在订阅"
+
+
+
