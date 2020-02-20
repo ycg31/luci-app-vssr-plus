@@ -29,9 +29,9 @@ s.des = server_count
 s.current = uci:get("vssr", name, "global_server")
 s.servers = cjson.encode(server_table)
 s.template = "vssr/tblsection"
-s.extedit = luci.dispatcher.build_url("admin/vpn/vssr/servers/%s")
-function s.create(...)
-    local sid = TypedSection.create(...)
+s.extedit = d.build_url("admin", "vpn", "vssr", "servers", "%s")
+function s.create(e, t)
+	local sid = TypedSection.create(e, t)
     if sid then
         luci.http.redirect(s.extedit % sid)
         return
