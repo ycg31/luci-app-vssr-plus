@@ -26,7 +26,7 @@ s.addremove = true
 s.description = string.format(translate("Server Count") ..  ": %d", server_count)
 s.sortable = true
 s.template = "cbi/tblsection"
-s.extedit = luci.dispatcher.build_url("admin/vpn/shadowsocksr/servers/%s")
+s.extedit = luci.dispatcher.build_url("admin/vpn/vssr/servers/%s")
 function s.create(e, t)
 	local sid = TypedSection.create(e, t)
 	if sid then
