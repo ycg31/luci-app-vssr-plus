@@ -783,5 +783,14 @@ msgstr "插件参数"
 msgid "Before subscribing please click below to delete all servers in the subscription"
 msgstr "订阅前请点击下面的删除所有服务器在订阅"
 
+msgid "Chnroute Setting"
+msgstr "国内IP段数据库更新设置"
+
+msgid "Enable custom chnroute"
+msgstr "启用自定义更新地址"
+
+msgid "Update url"
+msgstr "更新链接"
+
 
 
