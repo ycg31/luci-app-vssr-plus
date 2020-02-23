@@ -795,6 +795,19 @@ msgstr "更新链接"
 msgid "HTTP Proxy"
 msgstr "HTTP代理"
 
+msgid "Raw Mode"
+msgstr "模式"
+
+msgid "Seq Mode"
+msgstr "Seq模式"
+
+msgid "Cipher Mode"
+msgstr "加密模式"
+
+msgid "Auth Mode"
+msgstr "校验模式"
+
+
 
 
 
