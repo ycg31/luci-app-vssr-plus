@@ -807,7 +807,14 @@ msgstr "加密模式"
 msgid "Auth Mode"
 msgstr "校验模式"
 
+msgid "Speeder Mode"
+msgstr "Speeder模式"
 
+msgid "Fec"
+msgstr "fec参数"
+
+msgid "Mtu"
+msgstr "mtu参数"
 
 
 
