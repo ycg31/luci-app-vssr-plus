@@ -792,5 +792,9 @@ msgstr "启用自定义更新地址"
 msgid "Update url"
 msgstr "更新链接"
 
+msgid "HTTP Proxy"
+msgstr "HTTP代理"
+
+
 
 
