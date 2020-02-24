@@ -63,6 +63,8 @@ msgstr "SSR SOCKS5代理"
 msgid "Subscription"
 msgstr "订阅管理"
 
+
+
 msgid "Subscribing,Please do not refresh!"
 msgstr "订阅，请不要刷新!"
 
@@ -815,6 +817,19 @@ msgstr "fec参数"
 
 msgid "Mtu"
 msgstr "mtu参数"
+
+msgid "SS Server"
+msgstr "SS服务器"
+
+msgid "SSR Server"
+msgstr "SSR服务器"
+
+msgid "V2 Server"
+msgstr "V2服务器"
+
+msgid "SS/SSR/V2RAY Server"
+msgstr "SS/SSR/V2RAY 服务端"
+
 
 
 
