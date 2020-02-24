@@ -126,10 +126,10 @@ msgid "Client"
 msgstr "客户端"
 
 msgid "Visit foreign websites"
-msgstr "访问国外网站"
+msgstr "国外网站"
 
 msgid "Visit domestic website"
-msgstr "访问国内网站"
+msgstr "国内网站"
 
 msgid "Problem detected"
 msgstr "无法访问"
