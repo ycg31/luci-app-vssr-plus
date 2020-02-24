@@ -253,8 +253,6 @@ msgstr "内网主机列表"
 msgid "SSR Client"
 msgstr "客户端"
 
-msgid "SSR Server"
-msgstr "服务端"
 
 msgid "ShadowSocksR Server"
 msgstr "ShadowSocksR 服务端"
