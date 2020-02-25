@@ -835,13 +835,17 @@ msgstr "fec参数"
 msgid "Mtu"
 msgstr "mtu参数"
 
-msgid "SS Server"
+msgid "SS Servers"
 msgstr "SS服务器"
 
-msgid "SSR Server"
+
+msgid "SSR Servers"
 msgstr "SSR服务器"
 
-msgid "V2 Server"
+msgid "SSR Server"
+msgstr "服务端"
+
+msgid "V2 Servers"
 msgstr "V2服务器"
 
 msgid "SS/SSR/V2RAY Server"
