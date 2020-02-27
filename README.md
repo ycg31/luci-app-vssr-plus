@@ -41,8 +41,9 @@ openwrt-nanopi-r1s-h5 ： https://github.com/jerrykuku/openwrt-nanopi-r1s-h5
 
 源码来源：https://github.com/jerrykuku/luci-app-vssr
 
-### 如发现某些网站无法正常加载图片ssh执行如下操作
+### 如发现某些网站无法正常加载图片ssh执行已下操作
     cd ..
+
     rm -rfv  etc/dnsmasq.ssr/ad.conf
 
 ### 使用方法
