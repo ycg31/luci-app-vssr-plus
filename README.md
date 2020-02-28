@@ -28,6 +28,8 @@ https://github.com/coolsnowwolf/lede
 
 #### My other project
 Argon theme ：https://github.com/jerrykuku/luci-theme-argon
+               
+            ：https://github.com/Leo-Jo-My/luci-theme-argon-dark-mod
       
 theme : https://github.com/Leo-Jo-My/luci-theme-opentomato
 
@@ -35,7 +37,7 @@ theme : https://github.com/Leo-Jo-My/luci-theme-opentomcat
 
 theme : https://github.com/Leo-Jo-My/luci-theme-Butterfly
 
-openwrt-nanopi-r1s-h5 ： https://github.com/jerrykuku/openwrt-nanopi-r1s-h5
+### 兼容所有Lienol魔改Argon主题
 
 ### 说明
 
