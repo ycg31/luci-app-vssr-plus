@@ -29,7 +29,7 @@ https://github.com/coolsnowwolf/lede
 #### My other project
 Argon theme ：https://github.com/jerrykuku/luci-theme-argon
                
-            ：https://github.com/Leo-Jo-My/luci-theme-argon-dark-mod
+Argon theme ：https://github.com/Leo-Jo-My/luci-theme-argon-dark-mod
       
 theme : https://github.com/Leo-Jo-My/luci-theme-opentomato
 
