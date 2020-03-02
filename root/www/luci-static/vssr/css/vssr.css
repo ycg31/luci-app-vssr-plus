@@ -357,16 +357,18 @@ https://github.com/pure-css/pure/blob/master/LICENSE.md
 }
 .host_con.fast {
     color: #6f9a37;
-    }
+}
 
-    .host_con.nopass{
-        color: #f5365c;
-    }
-    .host_con.middle{
-        color: #ffff00;
-    }
-    .host_con.slow{
-        color: #ffa200;
+.host_con.nopass {
+    color: #dc3545;
+}
+
+.host_con.middle {
+    color: #fbc658;
+}
+
+.host_con.slow {
+    color: #fb6340;
 }
 
 .loadings {
