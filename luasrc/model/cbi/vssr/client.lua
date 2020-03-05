@@ -83,6 +83,9 @@ o:value("", translate("Disable"))
 o:value("same", translate("Same as Global Server"))
 for _,key in pairs(key_table) do o:value(key,server_table[key]) end
 
+o = s:option(ListValue, "socks5_proxy", translate("SOCKS5 Proxy"))
+o:value("", translate("Disable"))
+for _,key in pairs(key_table) do o:value(key,server_table[key]) end
 
 o = s:option(Flag, "v2ray_flow", translate("Open v2ray split-flow"))
 o.rmempty = false
