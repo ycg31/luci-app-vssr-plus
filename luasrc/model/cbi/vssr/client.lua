@@ -83,9 +83,16 @@ o:value("", translate("Disable"))
 o:value("same", translate("Same as Global Server"))
 for _,key in pairs(key_table) do o:value(key,server_table[key]) end
 
-o = s:option(ListValue, "socks5_proxy", translate("SOCKS5 Proxy"))
-o:value("", translate("Disable"))
+o = s:option(ListValue, "server", translate("SOCKS5 Proxy"))
+o:value("nil", translate("Disable"))
 for _,key in pairs(key_table) do o:value(key,server_table[key]) end
+o.default = "nil"
+o.rmempty = false
+
+o = s:option(Value, "local_port", translate("Local Port"))
+o.datatype = "port"
+o.default = 1080
+o.rmempty = false
 
 o = s:option(Flag, "v2ray_flow", translate("Open v2ray split-flow"))
 o.rmempty = false
