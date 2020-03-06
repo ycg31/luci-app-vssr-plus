@@ -775,6 +775,7 @@ fi
 			elif [ "$(uci_get_by_type global chinadns_enable)" = "5" ] ;then
 				dnscrypt_config_file
 				/etc/init.d/dnscrypt-proxy enable && /etc/init.d/dnscrypt-proxy start
+				dnsstrs="0.0.0.0:5337"
 		
 			else
 				dnsstrs="$(uci_get_by_type global tunnel_forward 8.8.4.4:53)"
