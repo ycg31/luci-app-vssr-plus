@@ -999,7 +999,13 @@ start() {
 			EOF
 		else
 			cat <<-EOF >/tmp/dnsmasq.d/dnsmasq-ssr.conf
-				conf-dir=/tmp/dnsmasq.oversea
+				conf-dir=/tmp/dnsmasq.oversea                                                     
+
+		else
+			mkdir -p /var/etc/dnsmasq.oversea
+			ln -s /etc/dnsmasq.oversea/* /var/etc/dnsmasq.oversea/
+			ln -s /etc/dnsmasq.ssr/appoint_list.conf /var/etc/dnsmasq.oversea/appoint_list.conf
+
 			EOF
 		fi
 		if [ -e "/tmp/dnsmasq.d/ad.conf" ]; then
