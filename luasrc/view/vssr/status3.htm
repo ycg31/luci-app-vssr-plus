@@ -17,7 +17,7 @@ math.randomseed(os.time())
    <div class="pure-u-1-6"> 
     <div class="block pure-g"> 
      <div class="pure-u-3-5"> 
-     <h4 id="vssr_status"><%:Client%><br /><span class="red"><%:Not Running%></span></h4>
+     <h4 id="vssr_status"><%:Client%><br /><span class="red"><%:Not Running%>✘</span></h4>
      </div> 
      <div class="pure-u-2-5"> 
       <div class="img-con"> 
@@ -30,7 +30,7 @@ math.randomseed(os.time())
     <div class="block pure-g"> 
      <div class="pure-u-3-5">  
      
-         <h4 id="baidu_status"><%:domestic website%><br><span class="red"><%:Problem detected%></span></h4>
+         <h4 id="baidu_status"><%:domestic website%><br><span class="red"><%:Problem detected%>✘</span></h4>
      </div> 
      <div class="pure-u-2-5"> 
       <div class="img-con"> 
@@ -42,7 +42,7 @@ math.randomseed(os.time())
     <div class="pure-u-1-6"> 
     <div class="block pure-g"> 
      <div class="pure-u-3-5"> 
-<h4 id="google_status"><%:foreign websites%><br><span class="red"><%:Problem detected%></span></h4>
+<h4 id="google_status"><%:foreign websites%><br><span class="red"><%:Problem detected%>✘</span></h4>
      </div> 
      <div class="pure-u-2-5"> 
       <div class="img-con"> 
@@ -55,7 +55,7 @@ math.randomseed(os.time())
    <div class="pure-u-1-6"> 
     <div class="block pure-g"> 
      <div class="pure-u-3-5"> 
-     <h4 id="ss_server_status"><%:SS Servers%><br><span class="red"><%:Not Running%></span></h4>
+     <h4 id="ss_server_status"><%:SS Servers%><br><span class="red"><%:Not Running%>✘</span></h4>
      </div> 
      <div class="pure-u-2-5"> 
       <div class="img-con"> 
@@ -67,7 +67,7 @@ math.randomseed(os.time())
    <div class="pure-u-1-6"> 
     <div class="block pure-g"> 
      <div class="pure-u-3-5"> 
-            <h4 id="ssr_server_status"><%:SSR Servers%><br><span class="red"><%:Not Running%></span></h4>
+            <h4 id="ssr_server_status"><%:SSR Servers%><br><span class="red"><%:Not Running%>✘</span></h4>
      </div> 
      <div class="pure-u-2-5"> 
       <div class="img-con"> 
@@ -80,7 +80,7 @@ math.randomseed(os.time())
    <div class="pure-u-1-6"> 
     <div class="block pure-g"> 
      <div class="pure-u-3-5"> 
-     <h4 id="v2_server_status"><%:V2 Servers%><br><span class="red"><%:Not Running%></span></h4>
+     <h4 id="v2_server_status"><%:V2 Servers%><br><span class="red"><%:Not Running%>✘</span></h4>
      </div> 
      <div class="pure-u-2-5"> 
       <div class="img-con"> 
@@ -98,12 +98,12 @@ math.randomseed(os.time())
     XHR.poll(5, '<%=url([[admin]], [[vpn]], [[vssr]], [[run]])%>', null,
             function (x, data) {
                 if (data) {
-					document.getElementById('vssr_status').innerHTML = data.global?'<%:Client%><br><span class="green"><%:Running%></span>':'<%:Client%><br><span class="red"><%:Not Running%></span>';
-                                                                                    document.getElementById('baidu_status').innerHTML = data.baidu?'<%:domestic website%><br><span class="green"><%:Connect OK%></span>':'<%:domestic website%><br><span class="red"><%:Problem detected%></span>';
-					document.getElementById('google_status').innerHTML = data.google?'<%:foreign websites%><br><span class="green"><%:Connect OK%></span>':'<%:foreign websites%><br><span class="red"><%:Problem detected%></span>';
-					document.getElementById('ss_server_status').innerHTML = data.ss_server?'<%:SS Servers%><br><span class="green"><%:Running%></span>':'<%:SS Servers%><br><span class="red"><%:Not Running%></span>';
-					document.getElementById('ssr_server_status').innerHTML = data.ssr_server?'<%:SSR Servers%><br><span class="green"><%:Running%></span>':'<%:SSR Servers%><br><span class="red"><%:Not Running%></span>';
-                                                                                       document.getElementById('v2_server_status').innerHTML = data.v2_server?'<%:V2 Servers%><br><span class="green"><%:Running%></span>':'<%:V2 Servers%><br><span class="red"><%:Not Running%></span>';					     
+					document.getElementById('vssr_status').innerHTML = data.global?'<%:Client%><br><span class="green"><%:Running%>✔</span>':'<%:Client%><br><span class="red"><%:Not Running%>✘</span>';
+                                                                                    document.getElementById('baidu_status').innerHTML = data.baidu?'<%:domestic website%><br><span class="green"><%:Connect OK%>✔</span>':'<%:domestic website%><br><span class="red"><%:Problem detected%>✘</span>';
+					document.getElementById('google_status').innerHTML = data.google?'<%:foreign websites%><br><span class="green"><%:Connect OK%>✔</span>':'<%:foreign websites%><br><span class="red"><%:Problem detected%>✘</span>';
+					document.getElementById('ss_server_status').innerHTML = data.ss_server?'<%:SS Servers%><br><span class="green"><%:Running%>✔</span>':'<%:SS Servers%><br><span class="red"><%:Not Running%>✘</span>';
+					document.getElementById('ssr_server_status').innerHTML = data.ssr_server?'<%:SSR Servers%><br><span class="green"><%:Running%>✔</span>':'<%:SSR Servers%><br><span class="red"><%:Not Running%>✘</span>';
+                                                                                       document.getElementById('v2_server_status').innerHTML = data.v2_server?'<%:V2 Servers%><br><span class="green"><%:Running%>✔</span>':'<%:V2 Servers%><br><span class="red"><%:Not Running%>✘</span>';					     
 							
             
                 }
