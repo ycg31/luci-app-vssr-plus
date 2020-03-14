@@ -148,10 +148,6 @@ function act_status()
     -- 全局服务器
    e.global=luci.sys.call("ps -w | grep ssr-retcp | grep -v grep >/dev/null") == 0 
 
---检测负载均衡状态
-    if tonumber(luci.sys.exec("ps -w | grep haproxy |grep -v grep| wc -l"))>0 then
-		e.haproxy= true  
-                   end
 --检测kcptun状态
     if tonumber(luci.sys.exec("ps -w | grep kcptun-client |grep -v grep| wc -l"))>0 then
 		e.kcptun= true  
@@ -187,7 +183,7 @@ function act_status()
 --检测UDP2RAW状态
                  if tonumber(luci.sys.exec("ps -w | grep udp2raw |grep -v grep| wc -l"))>0 then
 		e.udp2raw= true  
-end
+                  end
 --检测UDPspeeder状态
                  if tonumber(luci.sys.exec("ps -w | grep udpspeeder |grep -v grep| wc -l"))>0 then
 		e.udpspeeder= true  
@@ -196,18 +192,16 @@ end
 	if tonumber(luci.sys.exec("ps -w | grep ssr-server |grep -v grep| wc -l"))>0 then
 		e.server= true
                     end 
+
                   if luci.sys.call("pidof ssr-server >/dev/null") == 0 then
                    e.ssr_server= true
+
                    end 
 	if luci.sys.call("pidof ss-server >/dev/null") == 0 then
 		e.ss_server= true
 
                      end 
-if luci.sys.call("ps -w | grep trojan-server | grep -v grep >/dev/null") == 0 then
-		e.trojan_server= true
 
-
-	end  
 	if luci.sys.call("ps -w | grep v2ray-server | grep -v grep >/dev/null") == 0 then
 		e.v2_server= true
 
@@ -255,18 +249,6 @@ if luci.sys.call("ps -w | grep trojan-server | grep -v grep >/dev/null") == 0 th
         e.google =  true
     end
     
-
-    -- 检测Socks5
-   
-	if tonumber(luci.sys.exec("ps -w | grep ssr-local |grep -v grep| wc -l"))>0 then
-		e.socks5 = true
-	elseif tonumber(luci.sys.exec("ps -w | grep ss-local |grep -v grep| wc -l"))>0 then
-		e.socks5 = true
-	elseif tonumber(luci.sys.exec("ps -w | grep v2-ssr-local |grep -v grep| wc -l"))>0 then
-		e.socks5 = true
-                  elseif tonumber(luci.sys.exec("ps -w | grep trojan-ssr-local |grep -v grep| wc -l"))>0 then
-		e.socks5 = true
-	end    
 
     luci.http.prepare_content("application/json")
     luci.http.write_json(e)
@@ -434,15 +416,30 @@ end
 
 -- 检测单个节点状态并返回连接速度
 function check_port()
-
-    local e = {}
-    -- e.index=luci.http.formvalue("host")
-    local t1 = luci.sys.exec(
-                   "ping -c 1 -W 1 %q 2>&1 | grep -o 'time=[0-9]*.[0-9]' | awk -F '=' '{print$2}'" %
-                       luci.http.formvalue("host"))
+    local sockets = require "socket"
+    local set = luci.http.formvalue("host")
+    local port = luci.http.formvalue("port")
+    local retstring = ""
+    local iret = 1
+    iret = luci.sys.call(" ipset add ss_spec_wan_ac " .. set .. " 2>/dev/null")
+    socket = nixio.socket("inet", "stream")
+    socket:setopt("socket", "rcvtimeo", 3)
+    socket:setopt("socket", "sndtimeo", 3)
+    local t0 = sockets.gettime()
+    ret = socket:connect(set, port)
+    if tostring(ret) == "true" then
+        socket:close()
+        retstring = "1"
+    else
+        retstring = "0"
+    end
+    if iret == 0 then
+        luci.sys.call(" ipset del ss_spec_wan_ac " .. set)
+    end
+    local t1 = sockets.gettime()
+    local tt =t1 -t0
     luci.http.prepare_content("application/json")
-    luci.http.write_json({ret = 1, used = t1})
-
+    luci.http.write_json({ret = retstring , used = math.floor(tt*1000 + 0.5)})
 end
 
 function JudgeIPString(ipStr)
