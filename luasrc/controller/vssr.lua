@@ -416,30 +416,15 @@ end
 
 -- 检测单个节点状态并返回连接速度
 function check_port()
-    local sockets = require "socket"
-    local set = luci.http.formvalue("host")
-    local port = luci.http.formvalue("port")
-    local retstring = ""
-    local iret = 1
-    iret = luci.sys.call(" ipset add ss_spec_wan_ac " .. set .. " 2>/dev/null")
-    socket = nixio.socket("inet", "stream")
-    socket:setopt("socket", "rcvtimeo", 3)
-    socket:setopt("socket", "sndtimeo", 3)
-    local t0 = sockets.gettime()
-    ret = socket:connect(set, port)
-    if tostring(ret) == "true" then
-        socket:close()
-        retstring = "1"
-    else
-        retstring = "0"
-    end
-    if iret == 0 then
-        luci.sys.call(" ipset del ss_spec_wan_ac " .. set)
-    end
-    local t1 = sockets.gettime()
-    local tt =t1 -t0
+
+    local e = {}
+    -- e.index=luci.http.formvalue("host")
+    local t1 = luci.sys.exec(
+                   "ping -c 1 -W 1 %q 2>&1 | grep -o 'time=[0-9]*.[0-9]' | awk -F '=' '{print$2}'" %
+                       luci.http.formvalue("host"))
     luci.http.prepare_content("application/json")
-    luci.http.write_json({ret = retstring , used = math.floor(tt*1000 + 0.5)})
+    luci.http.write_json({ret = 1, used = t1})
+
 end
 
 function JudgeIPString(ipStr)
