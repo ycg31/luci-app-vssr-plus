@@ -873,3 +873,9 @@ msgstr "文件查看器"
 
 msgid "Enable Authentication"
 msgstr "启用 用户名/密码 认证"
+
+msgid "Subscribe Default Auto-Switch"
+msgstr "订阅新节点自动切换设置"
+
+msgid "Subscribe new add server default Auto-Switch on"
+msgstr "订阅加入的新节点默认开启自动切换"
