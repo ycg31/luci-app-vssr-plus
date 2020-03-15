@@ -800,7 +800,7 @@ msgid "Plugin Opts"
 msgstr "插件参数"
 
 msgid "Before subscribing please click below to delete all servers in the subscription"
-msgstr "使用此订阅前请删除所有服务器在订阅"
+msgstr "使用此订阅前请先删除所有服务器在订阅"
 
 msgid "Chnroute Setting"
 msgstr "国内IP段数据库更新设置"
