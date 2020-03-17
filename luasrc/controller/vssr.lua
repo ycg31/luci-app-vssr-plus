@@ -169,6 +169,8 @@ function act_status()
 		e.chinadns= true
                    elseif tonumber(luci.sys.exec("ps -w | grep pdnsd |grep -v grep| wc -l"))>0 then
 		e.chinadns= true
+	  elseif tonumber(luci.sys.exec("ps -w | grep dns2socks |grep -v grep| wc -l"))>0 then
+		e.chinadns= true	
            
                elseif tonumber(luci.sys.exec("ps -w | grep dnsforwarder |grep -v grep| wc -l"))>0 then
 		e.chinadns= true
