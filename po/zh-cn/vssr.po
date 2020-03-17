@@ -63,7 +63,8 @@ msgstr "SSR SOCKS5代理"
 msgid "Subscription"
 msgstr "订阅管理"
 
-
+msgid "Use DNS2SOCKS query and cache"
+msgstr "使用 DNS2SOCKS 查询并缓存"
 
 msgid "Subscribing,Please do not refresh!"
 msgstr "订阅，请不要刷新!"
