@@ -27,7 +27,6 @@ kcp_flag=0
 pdnsd_enable_flag=0
 dnsforwarder_enable_flag=0
 chinadns_enable_flag=0
-dnscrypt-proxy_enable_flag=0
 switch_enable=0
 ssserver_enable=0
 ssrserver_enable=0
@@ -1025,11 +1024,11 @@ start() {
 	start_server
 	start_local
 	if [ $(uci_get_by_type global monitor_enable 0) == "1" ]; then
-		let total_count=server_count+redir_tcp+redir_udp+tunnel_enable+kcp_enable_flag+local_enable+pdnsd_enable_flag+dnsforwarder_enable_flag+switch_enable+ssserver_enable+ssrserver_enable+v2rayserver_enable+haproxy_enable+privoxy_enable+chinadns_enable_flag+dnscrypt-proxy_enable_flag
+		let total_count=server_count+redir_tcp+redir_udp+tunnel_enable+kcp_enable_flag+local_enable+pdnsd_enable_flag+dnsforwarder_enable_flag+switch_enable+ssserver_enable+ssrserver_enable+v2rayserver_enable+haproxy_enable+privoxy_enable+chinadns_enable_flag
 
 		if [ $total_count -gt 0 ] ;then
 			#param:server(count) redir_tcp(0:no,1:yes)  redir_udp tunnel kcp local gfw
-			service_start /usr/bin/vssr-monitor $server_count $redir_tcp $redir_udp $tunnel_enable $kcp_enable_flag $local_enable $pdnsd_enable_flag $dnsforwarder_enable_flag $switch_enable $ssserver_enable $ssrserver_enable $v2rayserver_enable $haproxy_enable $privoxy_enable $chinadns_enable_flag $dnscrypt-proxy_enable_flag
+			service_start /usr/bin/vssr-monitor $server_count $redir_tcp $redir_udp $tunnel_enable $kcp_enable_flag $local_enable $pdnsd_enable_flag $dnsforwarder_enable_flag $switch_enable $ssserver_enable $ssrserver_enable $v2rayserver_enable $haproxy_enable $privoxy_enable $chinadns_enable_flag 
 		fi
 	fi
 	ENABLE_SERVER=$(uci_get_by_type global global_server nil)
