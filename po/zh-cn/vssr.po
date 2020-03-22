@@ -63,8 +63,7 @@ msgstr "SSR SOCKS5代理"
 msgid "Subscription"
 msgstr "订阅管理"
 
-msgid "Use DNS2SOCKS query and cache"
-msgstr "使用 DNS2SOCKS 查询并缓存"
+
 
 msgid "Subscribing,Please do not refresh!"
 msgstr "订阅，请不要刷新!"
@@ -126,10 +125,10 @@ msgstr "个节点"
 msgid "Client"
 msgstr "客户端"
 
-msgid "foreign websites"
+msgid "youtube"
 msgstr "国外网站"
 
-msgid "domestic website"
+msgid "baidu"
 msgstr "国内网站"
 
 msgid "Problem detected"
@@ -861,8 +860,8 @@ msgstr "删除所有订阅服务器节点"
 msgid "Update All Subscribe Severs"
 msgstr "更新所有订阅服务器节点"
 
-msgid "No special needs, please click here to subscribe to update"
-msgstr "没有特殊需要，请点击这里订阅更新"
+msgid "Use DNS2SOCKS query and cache"
+msgstr "使用 DNS2SOCKS 查询并缓存"
 
 msgid "Running Details:"
 msgstr "进程详情："
