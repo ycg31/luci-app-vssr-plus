@@ -15,7 +15,7 @@ end
                   entry({"admin", "vpn", "vssr", "servers"}, arcombine(cbi("vssr/servers"), cbi("vssr/client-config")),  _("Node List"), 20).leaf =true
                   entry({"admin", "vpn", "vssr", "subscription"},cbi("vssr/subscription"),_("Subscription"),30).leaf=true
                   entry({"admin", "vpn", "vssr", "control"}, cbi("vssr/control"), _("Access Control"), 40).leaf=true
-                  entry({"admin", "vpn", "vssr", "servers-list"}, cbi("vssr/servers-list"),  _("Severs Nodes"), 50).leaf =true
+                  entry({"admin", "vpn", "vssr", "servers-list"}, arcombine(cbi("vssr/servers-list"), cbi("vssr/client-config")),  _("Severs Nodes"), 50).leaf =true
                   entry({"admin", "vpn", "vssr", "appointlist"},form("vssr/appointlist"),_("Appointlist List"),60).leaf =true
                   entry({"admin", "vpn", "vssr", "udp2raw"},cbi("vssr/udp2raw"),_("udp2raw tunnel"),70).leaf = true
                   entry({"admin", "vpn", "vssr", "advanced"}, cbi("vssr/advanced"),_("Advanced Settings"), 80).leaf =true
@@ -209,24 +209,26 @@ end
     luci.http.prepare_content("application/json")
     luci.http.write_json(e)
 end
-
 function act_ping()
-	local e = {}
-	local domain = luci.http.formvalue("domain")
-	local port = luci.http.formvalue("port")
-	e.index = luci.http.formvalue("index")
-	local iret = luci.sys.call(" ipset add ss_spec_wan_ac " .. domain .. " 2>/dev/null")
-	local socket = nixio.socket("inet", "stream")
-	socket:setopt("socket", "rcvtimeo", 3)
-	socket:setopt("socket", "sndtimeo", 3)
-	e.socket = socket:connect(domain, port)
-	socket:close()
-	e.ping = luci.sys.exec("ping -c 1 -W 1 %q 2>&1 | grep -o 'time=[0-9]*.[0-9]' | awk -F '=' '{print$2}'" % domain)
-	if (iret == 0) then
-		luci.sys.call(" ipset del ss_spec_wan_ac " .. domain)
-	end
-	luci.http.prepare_content("application/json")
-	luci.http.write_json(e)
+        	    local e = {}
+	            local domain = luci.http.formvalue("domain")
+	            local port = luci.http.formvalue("port")
+	            e.index = luci.http.formvalue("index")
+	            local iret = luci.sys.call(" ipset add ss_spec_wan_ac " .. domain .. " 2>/dev/null")
+	            local socket = nixio.socket("inet", "stream")
+	            socket:setopt("socket", "rcvtimeo", 3)
+	            socket:setopt("socket", "sndtimeo", 3)
+	            e.socket = socket:connect(domain, port)
+        	    socket:close()
+	            e.ping = luci.sys.exec(string.format("echo -n $(tcpping -c 1 -i 1 -p %s %s 2>&1 | grep -o 'time=[0-9]*.[0-9]' | awk -F '=' '{print$2}') 2>/dev/null",port, domain))
+	            if (e.ping == "") then
+                    e.ping = luci.sys.exec("ping -c 1 -W 1 %q 2>&1 | grep -o 'time=[0-9]*.[0-9]' | awk -F '=' '{print$2}'" % domain)
+end
+	            if (iret == 0) then
+		          luci.sys.call(" ipset del ss_spec_wan_ac " .. domain)
+end
+      	            luci.http.prepare_content("application/json")
+	            luci.http.write_json(e)
 end
 
 function check_status()
