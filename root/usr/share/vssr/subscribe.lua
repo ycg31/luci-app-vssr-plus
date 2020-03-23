@@ -339,6 +339,8 @@ local execute = function()
 						if result then
 							if result.alias:find("过期时间") or
 								result.alias:find("剩余流量") or
+								result.alias:find("最新域名") or
+								result.alias:find("到期时间") or
 								result.alias:find("QQ群") or
 								result.alias:find("官网") or
 								result.alias:find("防失联地址") or
