@@ -1066,6 +1066,7 @@ stop() {
 	killall -q -9 v2ray-plugin
 	killall -q -9 gq-client
         killall -q -9 dnscrypt-proxy
+	killall -q -9 dnsforwarder
 	killall -q -9 gq-server
 	killall -q -9 obfs-local
 	killall -q -9 obfs-server
