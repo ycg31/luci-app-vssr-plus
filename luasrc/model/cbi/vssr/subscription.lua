@@ -58,6 +58,15 @@ o.rmempty = false
 o.description = translate("Subscribe new add server default Auto-Switch on")
 o.default="0"
 
+o = s:option(Button,"update",translate("Update"))
+o.inputstyle = "reload"
+o.write = function()
+    luci.sys.call("nohup /usr/bin/lua /usr/share/vssr/subscribe.lua  >/www/check_update.htm")
+      luci.sys.call("nohup /usr/bin/lua /usr/share/vssr/subscribe.lua >>/tmp/vssr.log 2>&1")
+    luci.sys.exec("sleep 2")
+    luci.http.redirect(luci.dispatcher.build_url("admin", "vpn", "vssr", "subscription"))
+end
+
 o = s:option(DummyValue, "", "")
 o.rawhtml = true
 o.template = "vssr/update_subscribe"
