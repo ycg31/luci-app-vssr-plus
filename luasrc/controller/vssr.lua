@@ -141,13 +141,13 @@ function act_status()
               math.randomseed(os.time())
               local e = {}
 -- 全局服务器
-              e.global=luci.sys.call("ps -w | grep ssr-retcp | grep -v grep >/dev/null") == 0
+                   e.global=luci.sys.call("ps -w | grep ssr-retcp | grep -v grep >/dev/null") == 0
 -- 检测Socks5
 
 	           if tonumber(luci.sys.exec("ps -w | grep ssr-local |grep -v grep| wc -l"))>0 then
-	           e.socks5 = true
-             elseif tonumber(luci.sys.exec("ps -w | grep ss-local |grep -v grep| wc -l"))>0 then
-		         e.socks5 = true
+	                e.socks5 = true
+                   elseif tonumber(luci.sys.exec("ps -w | grep ss-local |grep -v grep| wc -l"))>0 then
+		        e.socks5 = true
 	           elseif tonumber(luci.sys.exec("ps -w | grep v2-ssr-local |grep -v grep| wc -l"))>0 then
   end
 --检测chinadns状态
@@ -157,28 +157,25 @@ function act_status()
 	 	        e.chinadns= true
 	          elseif tonumber(luci.sys.exec("ps -w | grep dnscrypt-proxy |grep -v grep| wc -l"))>0 then
 		        e.chinadns= true
-            elseif tonumber(luci.sys.exec("ps -w | grep pdnsd |grep -v grep| wc -l"))>0 then
+                  elseif tonumber(luci.sys.exec("ps -w | grep pdnsd |grep -v grep| wc -l"))>0 then
 		        e.chinadns= true
 	          elseif tonumber(luci.sys.exec("ps -w | grep dns2socks |grep -v grep| wc -l"))>0 then
 		        e.chinadns= true
-
-            elseif tonumber(luci.sys.exec("ps -w | grep dnsforwarder |grep -v grep| wc -l"))>0 then
+                  elseif tonumber(luci.sys.exec("ps -w | grep dnsforwarder |grep -v grep| wc -l"))>0 then
 	        	e.chinadns= true
 end
 --检测服务端状态
 	         if tonumber(luci.sys.exec("ps -w | grep ssr-server |grep -v grep| wc -l"))>0 then
-	         e.server= true
+	                e.server= true
 end
-           if luci.sys.call("pidof ssr-server >/dev/null") == 0 then
-           e.ssr_server= true
+                 if luci.sys.call("pidof ssr-server >/dev/null") == 0 then
+                        e.ssr_server= true
 end
  	         if luci.sys.call("pidof ss-server >/dev/null") == 0 then
-		       e.ss_server= true
-
+		        e.ss_server= true
 end
-
-	        if luci.sys.call("ps -w | grep v2ray-server | grep -v grep >/dev/null") == 0 then
-		      e.v2_server= true
+	         if luci.sys.call("ps -w | grep v2ray-server | grep -v grep >/dev/null") == 0 then
+		        e.v2_server= true
 
 end
 
@@ -210,27 +207,26 @@ end
     luci.http.write_json(e)
 end
 function act_ping()
-        	    local e = {}
-	            local domain = luci.http.formvalue("domain")
-	            local port = luci.http.formvalue("port")
-	            e.index = luci.http.formvalue("index")
-	            local iret = luci.sys.call(" ipset add ss_spec_wan_ac " .. domain .. " 2>/dev/null")
-	            local socket = nixio.socket("inet", "stream")
-	            socket:setopt("socket", "rcvtimeo", 3)
-	            socket:setopt("socket", "sndtimeo", 3)
-	            e.socket = socket:connect(domain, port)
-        	    socket:close()
-	            e.ping = luci.sys.exec(string.format("echo -n $(tcpping -c 1 -i 1 -p %s %s 2>&1 | grep -o 'time=[0-9]*.[0-9]' | awk -F '=' '{print$2}') 2>/dev/null",port, domain))
-	            if (e.ping == "") then
-                    e.ping = luci.sys.exec("ping -c 1 -W 1 %q 2>&1 | grep -o 'time=[0-9]*.[0-9]' | awk -F '=' '{print$2}'" % domain)
+	local e = {}
+	local domain = luci.http.formvalue("domain")
+	local port = luci.http.formvalue("port")
+	e.index = luci.http.formvalue("index")
+	local iret = luci.sys.call(" ipset add ss_spec_wan_ac " .. domain .. " 2>/dev/null")
+	local socket = nixio.socket("inet", "stream")
+	socket:setopt("socket", "rcvtimeo", 3)
+	socket:setopt("socket", "sndtimeo", 3)
+	e.socket = socket:connect(domain, port)
+	socket:close()
+	e.ping = luci.sys.exec("ping -c 1 -W 1 %q 2>&1 | grep -o 'time=[0-9]*.[0-9]' | awk -F '=' '{print$2}'" % domain)
+	if (e.ping == "") then
+		e.ping = luci.sys.exec(string.format("echo -n $(tcpping -c 1 -i 1 -p %s %s 2>&1 | grep -o 'ttl=[0-9]* time=[0-9]*.[0-9]' | awk -F '=' '{print$3}') 2>/dev/null",port, domain))
+  end
+	if (iret == 0) then
+		luci.sys.call(" ipset del ss_spec_wan_ac " .. domain)
+	end
+	luci.http.prepare_content("application/json")
+	luci.http.write_json(e)
 end
-	            if (iret == 0) then
-		          luci.sys.call(" ipset del ss_spec_wan_ac " .. domain)
-end
-      	            luci.http.prepare_content("application/json")
-	            luci.http.write_json(e)
-end
-
 function check_status()
 	local set ="/usr/bin/ssr-check www." .. luci.http.formvalue("set") .. ".com 80 3 1"
 	sret=luci.sys.call(set)
